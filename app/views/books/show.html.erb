@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <%= render '../views/sidebar', user: @book.user, new_book: @new_book %>
+    </div>
+    <div class="col-9">
+      <h2>Book detail</h2>
+      <table class="table table-hover">
+        <tbody>
+          <tr>
+            <td>
+              <a href="/users/<%= @book.user.id %>">
+              <% if @book.user.profile_image.nil? %>
+                <%= image_tag scr = "no_image.jpg", :size=>"50x50" %>
+              <% else %>
+                <%= image_tag attachment_url(@book.user, :profile_image, :fill, 50, 50, format: "jpg") %>
+              <% end %><br>
+              <%= @book.user.name %>
+              </a>
+            </td>
+            <td><%= @book.title %></td>
+            <td><%= @book.opinion %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

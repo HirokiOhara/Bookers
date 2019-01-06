@@ -1,0 +1,43 @@
+<h2>User info</h2>
+<% if user.profile_image.nil? %>
+  <%= image_tag scr = "no_image.jpg", :size=>"100x100" %>
+<% else %>
+  <%= image_tag attachment_url(user, :profile_image, :fill, 100, 100, format: "jpg") %>
+<% end %>
+<table class="table">
+  <tbody>
+    <tr>
+      <td>name</td>
+      <td><%= user.name%></td>
+    </tr>
+    <tr>
+      <td>introduction</td>
+      <td><%= user.intro %></td>
+    </tr>
+  </tbody>
+</table>
+<a class="col-12 btn btn-light fas fa-wrench" href="/users/<%= user.id %>/edit"></a>
+<h2>New book</h2>
+<%= form_with(model: new_book, local: true) do |f| %>
+  <% if new_book.errors.any? %>
+    <div id="error_explanation">
+    <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <ul>
+        <% new_book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title, class: "col-12"%>
+  </div>
+  <div class="field">
+    <%= f.label :opinion %><br>
+    <%= f.text_area :opinion, class: "col-12"%>
+  </div>
+  <div class="actions">
+    <%= f.submit class: "btn btn-primary col-12"%>
+  </div>
+<% end %>

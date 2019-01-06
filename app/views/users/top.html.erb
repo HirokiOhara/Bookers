@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 offset-3">
+      <% flash.each do |name, msg| %>
+        <div class="alert alert-<%= name %>">
+          <%= msg %>
+        </div>
+      <% end %>
+      <h2>Welcome to Bookers!!</h2>
+      <p>
+        In Bookers,<br>
+        you can share and exchange your opinions, inpressions, and emotions<br>
+        about varioius books!
+      </p>
+      <div class="btn-group-vertical col-12">
+        <a class="btn btn-outline-info" href="/users/sign_in">Log in</a>
+        <a class="btn btn-outline-success" href="/users/sign_up">Sign up</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+</script>
+
